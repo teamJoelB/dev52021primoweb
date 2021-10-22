@@ -1,15 +1,15 @@
 <%-- 
-    Document   : index
-    Created on : 20 oct. 2021, 11:45:21
+    Document   : inscription
+    Created on : 21 oct. 2021, 12:21:35
     Author     : joelg
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inscription</title>
 
         <link rel="stylesheet" href="css/style.css" >
 
@@ -34,9 +34,17 @@
     <body>
         <div style="margin-top: 20px">
             <div style="margin: auto; width: 40%">
-                <form action="login" method="POST">
+                <form action="inscription" method="POST">
                     <div class="card p-5 my-shadow">
-                        <p class="lt-space text-secondary text-center">CONNEXION</p>
+                        <p class="lt-space text-secondary text-center">INSCRIPTION</p>
+                        <div class="form-group">
+                            <label class="grey-text">Nom</label>
+                            <input name="nom" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="grey-text">Prenom</label>
+                            <input name="prenom" type="text" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label class="grey-text">Login</label>
                             <input name="login" type="text" class="form-control">
@@ -45,8 +53,8 @@
                             <label class="grey-text">Password</label>
                             <input name="password" type="password" class="form-control">
                         </div>
-                        <button type="submit" class="btn purple-gradient btn-sm">connexion</button>
-                        <button type="button" onclick="window.location.href='inscription'" class="btn btn-link">S'inscrire ?</button>
+                        <button type="submit" class="btn purple-gradient btn-sm">inscription</button>
+                        <button type="button" onclick="window.location.href='login'" class="btn btn-link">Vous avez déja un compte ?</button>
                         <p class="text-danger text-center">${msg}</p>
                     </div>
                 </form>

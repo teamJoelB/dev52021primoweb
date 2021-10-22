@@ -1,15 +1,17 @@
 <%-- 
-    Document   : index
-    Created on : 20 oct. 2021, 11:45:21
+    Document   : membre
+    Created on : 21 oct. 2021, 15:14:51
     Author     : joelg
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Membre</title>
+
 
         <link rel="stylesheet" href="css/style.css" >
 
@@ -30,27 +32,30 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
     </head>
     <body>
-        <div style="margin-top: 20px">
-            <div style="margin: auto; width: 40%">
-                <form action="login" method="POST">
-                    <div class="card p-5 my-shadow">
-                        <p class="lt-space text-secondary text-center">CONNEXION</p>
-                        <div class="form-group">
-                            <label class="grey-text">Login</label>
-                            <input name="login" type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="grey-text">Password</label>
-                            <input name="password" type="password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn purple-gradient btn-sm">connexion</button>
-                        <button type="button" onclick="window.location.href='inscription'" class="btn btn-link">S'inscrire ?</button>
-                        <p class="text-danger text-center">${msg}</p>
-                    </div>
-                </form>
-            </div>
+        <h1>Hello World Membre!</h1>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${membres}" var="m">
+                        <tr>
+                            <td>${m.nom}</td>
+                            <td>${m.prenom}</td>
+                            <td>${m.login}</td>
+                        </tr>
+                    </c:forEach>
+
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

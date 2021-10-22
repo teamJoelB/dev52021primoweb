@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author joelg
  */
-@WebServlet(name = "ConnexionServlet", urlPatterns = {"/login"})
-public class ConnexionServlet extends HttpServlet {
+@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription"})
+public class InscriptionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class ConnexionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConnexionServlet</title>");
+            out.println("<title>Servlet InscriptionServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConnexionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet InscriptionServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,8 +60,7 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-
+        request.getRequestDispatcher("inscription.jsp").forward(request, response);
     }
 
     /**
@@ -75,24 +74,18 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String log = request.getParameter("login");
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String login = request.getParameter("login");
         String mdp = request.getParameter("password");
 
+        User u = new User(0, nom, prenom, login, mdp);
         try {
-            User u = UserDao.getByLoginAndPassword(log, mdp);
-            if (u != null) {
-                response.sendRedirect("home");
-            } else {
-                request.setAttribute("msg", "Bad credential");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
+            UserDao.insertUser(u);
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
-            out.println(e.getMessage());
+            out.println("exception : " + e.getMessage());
         }
-
-        //request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
     }
 
     /**
