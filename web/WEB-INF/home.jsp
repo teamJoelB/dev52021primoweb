@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1 style="color: steelblue; text-align: center">Bonjour nous somme sur la page de home ( ${name} )</h1>
+        <h1 style="color: steelblue; text-align: center">Bonjour nous somme sur la page de home ( ${name.prenom} ${name.nom} )</h1>
     </body>
 </html>

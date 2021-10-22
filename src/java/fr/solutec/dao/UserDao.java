@@ -50,6 +50,8 @@ public class UserDao {
         prepare.setString(4, u.getPassword());
 
         prepare.execute();
+        
+        connexion.close();
     }
 
     public static List<User> getAllUser() throws SQLException {

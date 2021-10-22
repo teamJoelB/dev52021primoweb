@@ -26,6 +26,7 @@ public class AccessBd {
     
     static {
         try {
+            //sengleton
             Class.forName(DRIVER_NAME).newInstance();
         } catch (Exception e) {
             System.out.println("Le pilote ne s'est pas chargé.");

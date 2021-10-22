@@ -6,3 +6,10 @@
 .lt-space{
     letter-spacing: 5px !important;
 }
+
+.max-length {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}

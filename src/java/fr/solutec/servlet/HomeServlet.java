@@ -5,6 +5,7 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,7 +39,7 @@ public class HomeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeServlet</title>");            
+            out.println("<title>Servlet HomeServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HomeServlet at " + request.getContextPath() + "</h1>");
@@ -58,10 +60,18 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        String nom = "Joel BANKA";
-        request.setAttribute("name", nom);
-        request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+
+        HttpSession session = request.getSession(true);
+        User u = (User) session.getAttribute("userConnect");
+
+        if (u != null) {
+            request.setAttribute("name", u);
+            request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+        } else {
+            request.setAttribute("msg", "Vous devez être connecté pour atteindre cette page");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
     }
 
     /**
