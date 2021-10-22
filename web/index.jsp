@@ -39,7 +39,7 @@
                         <p class="lt-space text-secondary text-center">CONNEXION</p>
                         <div class="form-group">
                             <label class="grey-text">Login</label>
-                            <input name="login" type="text" class="form-control">
+                            <input name="login" type="text" value="${param['login']}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="grey-text">Password</label>

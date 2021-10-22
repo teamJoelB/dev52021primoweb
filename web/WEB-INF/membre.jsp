@@ -35,8 +35,8 @@
 
     </head>
     <body>
-        <h1>Hello World Membre!</h1>
-        <div class="container">
+         <%@include file="menu.jsp" %>
+        <div class="container mt-5">
             <table class="table">
                 <thead>
                     <tr>

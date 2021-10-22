@@ -34,6 +34,7 @@
 
     </head>
     <body>
+         <%@include file="menu.jsp" %>
         <div class="container mt-5">
             <div class="row">
                 <c:forEach items="${memos}" var="m">
